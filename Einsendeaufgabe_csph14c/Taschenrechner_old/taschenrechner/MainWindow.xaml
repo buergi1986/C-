@@ -1,0 +1,25 @@
+﻿<Window x:Class="taschenrechner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:taschenrechner"
+        mc:Ignorable="d"
+        Title="Taschenrechner" Height="244.928" Width="392.029">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="21,31,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" x:Name="zahlTextbox1"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="21,77,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" x:Name="zahlTextbox2"/>
+        <Label x:Name="ergebnisLabel" HorizontalAlignment="Left" Margin="21,143,0,0" VerticalAlignment="Top" Content="Ergebnis:"/>
+        <Label x:Name="rechenLabel" HorizontalAlignment="Left" Margin="79,143,0,0" VerticalAlignment="Top" Width="125" Content="0"/>
+        <Button x:Name="berechnenButton" Content="Berechnen" Click="Berechnen_Click"  HorizontalAlignment="Left" Margin="21,174,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="beendenButton" Content="Beenden" Click="Beenden_Click"  HorizontalAlignment="Left" Margin="283,174,0,0" VerticalAlignment="Top" Width="75"/>
+        <GroupBox Header="Rechenoperation" HorizontalAlignment="Left" Height="99" Margin="212,22,0,0" VerticalAlignment="Top" Width="146">
+            <StackPanel HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="99" Margin="10,10,0,0">
+                <RadioButton x:Name="additionRadiobutton" Content="Addition"/>
+                <RadioButton x:Name="subtraktionRadiobutton" Content="Subtraktion"/>
+                <RadioButton x:Name="multipliaktionRadiobutton" Content="Multipliaktion"/>
+                <RadioButton x:Name="divisionRadiobutton" Content="Division"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

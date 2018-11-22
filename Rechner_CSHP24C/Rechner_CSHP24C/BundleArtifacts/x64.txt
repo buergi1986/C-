@@ -1,0 +1,2 @@
+MainPackage=D:\visual c\Rechner_CSHP24C\Rechner_CSHP24C\bin\x64\Debug\Rechner_CSHP24C_1.0.0.0_x64_Debug.appx
+SymbolPackage=D:\visual c\Rechner_CSHP24C\Rechner_CSHP24C\AppPackages\Rechner_CSHP24C_1.0.0.0_Debug_Test\Rechner_CSHP24C_1.0.0.0_x64_Debug.appxsym

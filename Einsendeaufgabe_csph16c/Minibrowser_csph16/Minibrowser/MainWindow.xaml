@@ -1,0 +1,112 @@
+﻿<Window x:Class="Minibrowser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Minibrowser"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" WindowState="Maximized" Icon="symbole/icon.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="NavigationCommands.BrowseForward" CanExecute="BrowseForward_CanExecute" Executed="BrowseForward_Executed" />
+        <CommandBinding Command="NavigationCommands.BrowseBack" CanExecute="BrowseBack_CanExecute" Executed="BrowseBack_Executed" />
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="spalteLinks" Width="1*" MinWidth="100"/>
+            <ColumnDefinition x:Name="spalteSplitter" Width="5"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Die Menüleiste mit einem Eintrag -->
+        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Header="_Datei">
+                <MenuItem x:Name="dateiOeffnen" Header="Ö_ffnen" Click="dateiOeffnen_Click"/>
+                <Separator/>
+                <MenuItem x:Name="dateiBeenden" Header="_Beenden" Click="dateiBeenden_Click" />
+            </MenuItem>
+            <MenuItem Header="_Navigation">
+                <MenuItem x:Name="navigationVorwaerts" Header="_Vorwärts" Command="NavigationCommands.BrowseForward">
+                    <MenuItem.Icon>
+                        <Image Source="symbole/browser_vorwaerts.bmp"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="navigationRueckwaerts" Header="_Rückwärts" Command="NavigationCommands.BrowseBack">
+                    <MenuItem.Icon>
+                        <Image Source="symbole/browser_zurueck.bmp"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="navigationNeuLaden" Header="N_eu laden" Click="navigationNeuLaden_Click">
+                    <MenuItem.Icon>
+                        <Image Source="symbole/browser_neuladen.bmp"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Ansicht">
+                <MenuItem x:Name="ansichtNavigationsliste" Header="_Navigationsliste" IsChecked="True" IsCheckable="True" Click="ansichtNavigationsliste_Click" />
+                <MenuItem x:Name="ansichtSymbolleisten" Header="_Symbolleisten">
+                    <MenuItem x:Name="ansichtSymbolleistenAdresse" Header="Ad_resse" IsCheckable="True" IsChecked="True" Click="ansichtSymbolleistenAdresse_Click"/>
+                    <MenuItem x:Name="ansichtSymbolleistenNavigation" Header="Na_vigation" IsCheckable="True" IsChecked="True" Click="ansichtSymbolleistenNavigation_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="ansichtVollbild" Header="Vo_llbild" IsCheckable="True" IsChecked="False" Click="ansichtVollbild_Click"/>
+            </MenuItem>
+            <MenuItem Header="Hilfe">
+                <MenuItem Header="Info" Click="hilfeInfo_Click"/>
+            </MenuItem>
+        </Menu>
+        <!-- Die Symbolleisten -->
+        <ToolBarTray Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+            <!-- Die erste Leiste -->
+            <ToolBar x:Name="toolbarAdresse">
+                <TextBox x:Name="eingabefeld" Width="350" ToolTip="Geben Sie eine Adresse ein" KeyDown="eingabefeld_KeyDown">               
+                </TextBox>                   
+                <Button x:Name="buttonLos" ToolTip="Los geht's" Height="32" Click="buttonLos_Click" MouseEnter="buttonLos_MouseEnter">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="symbole/browser_los.bmp"/>
+                        <TextBlock Margin="5,5,0,0" Text="Los geht's"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+            <!-- Die zweite Leiste -->
+            <ToolBar x:Name="toolbarNavigation">
+                <Button x:Name="buttonZurueck" ToolTip="Zurück" Width="32" Height="32" Command="NavigationCommands.BrowseBack">
+                    <Image Source="symbole/browser_zurueck.bmp" >
+                    </Image>
+                </Button>
+                <Button x:Name="buttonVorwaerts" ToolTip="Vorwärts" Width="32" Height="32" Command="NavigationCommands.BrowseForward">
+                    <Image Source="symbole/browser_vorwaerts.bmp">
+                    </Image>
+                </Button>
+                <Button x:Name="buttonNeuLaden" ToolTip="Neu laden" Width="32" Height="32" Click="navigationNeuLaden_Click">
+                    <Image Source="symbole/browser_neuladen.bmp">
+                    </Image>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <!-- Das Listenfeld mit einem Eintrag -->
+        <ListBox x:Name="liste" Grid.Column="0" Grid.Row="2" SelectionChanged="liste_SelectionChanged">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="kontextMenuLoeschen" Header="Löschen" Click="kontextMenuLoeschen_Click"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+        <!-- Der Splitter -->
+        <GridSplitter Grid.Column="1" Grid.Row="2" Width ="5" Background="LightGray" ResizeBehavior="PreviousAndNext"/>
+        <!-- Das Steuerelement für den WebBrowser-->
+        <WebBrowser x:Name="browser" Grid.Column="3" Grid.Row="2" Source="http://www.golem.de" Navigated="browser_Navigated" Navigating="browser_Navigating"/>
+        <!-- Die Statusleiste mit einem Label -->
+        <StatusBar x:Name="statusleiste" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3">
+            <StatusBarItem>
+                <ProgressBar x:Name="statusbarProgress" Height="20" Width="300" IsIndeterminate="True" Visibility="Collapsed"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <Label x:Name="statusbarLabel" Content=""></Label>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

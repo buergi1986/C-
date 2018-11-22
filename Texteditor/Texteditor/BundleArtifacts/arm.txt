@@ -1,0 +1,2 @@
+MainPackage=D:\visual c\Texteditor\Texteditor\bin\ARM\Debug\Texteditor_1.0.0.0_ARM_Debug.appx
+SymbolPackage=D:\visual c\Texteditor\Texteditor\AppPackages\Texteditor_1.0.0.0_Debug_Test\Texteditor_1.0.0.0_ARM_Debug.appxsym

@@ -1,0 +1,26 @@
+﻿<Window x:Class="animation_kreis_quadrat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Kreis und Quadrat Bewegung" Height="800" Width="800" WindowState="Maximized">
+    <Grid >
+        <Button x:Name="buttonStart" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,192,0,0" Width="75" Click="buttonStart_Click"/>
+        <Button x:Name="buttonReset" Content="Reset" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,217,0,0" Width="75" Click="buttonReset_Click"/>
+        <Button x:Name="buttonBeenden" Content="Beenden" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,242,0,0"  Width="75" Click="buttonBeenden_Click"/>
+        <Slider Name="sliderQuadrat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="30" Margin="10,35,582,703" Minimum="100" Maximum="600" TickPlacement="BottomRight" TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="sliderQuadrat_ValueChanged" />
+        <Slider x:Name="sliderKreis" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="30" Margin="10,96,0,0" Minimum="100" Maximum="600" TickPlacement="BottomRight" TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="sliderKreis_ValueChanged" />
+        <Slider x:Name="sliderGeschwindigkeit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="30" Margin="10,157,0,0" Minimum="1" Maximum="60" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="sliderGeschwindigkeit_ValueChanged"/>
+        <Label Content="Grösser Kreis" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+        <Label Content="Grösser Quadrat" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Geschwindigkeit" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textblockQuadrat" Text="" HorizontalAlignment="Left" Margin="225,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.373,0.875"/>
+        <TextBlock x:Name="textblockKreis" Text="" HorizontalAlignment="Left" Margin="225,95,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textblockGeschwindigkeit" Text="" HorizontalAlignment="Left" Margin="225,160,0,0" VerticalAlignment="Top"/>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto">
+            <Rectangle x:Name="quadrat" Fill="Green" Stroke="Bisque" StrokeThickness="10" Width="100" Height="100" />
+            <Ellipse x:Name="kreis" Stroke="Coral" StrokeThickness="15" Width="100" Height="100" />
+        </Grid>
+    </Grid>
+</Window>

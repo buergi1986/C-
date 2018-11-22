@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Texteditor.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Texteditor"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <AppBarButton x:Name="vergroessertText" Icon="FontIncrease" Click="vergroessertText_Click" ToolTipService.ToolTip="Schriftgrad vergrössern" />
+        <AppBarButton x:Name="verkleinertText" Margin="68,0,0,0" Icon="FontDecrease" Click="verkleinertText_Click" ToolTipService.ToolTip="Schriftgrad verkleinern" />
+        <ComboBox x:Name="fontSize" Margin="136,0,0,0" Width="68" SelectionChanged="fontSize_SelectionChanged" VerticalAlignment="Center" />
+        <RichEditBox x:Name="editor" Grid.Row="1" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+
+    </Grid>
+</Page>

@@ -1,0 +1,45 @@
+﻿<Window x:Class="snake_csph18c.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:snake_csph18c"
+        mc:Ignorable="d"
+        Title="Snake" Height="600" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" KeyDown="Window_KeyDown">
+    <Window.InputBindings>
+        <KeyBinding Command="{x:Static local:MainWindow.Pause}" Key="P"/>
+        <KeyBinding Command="{x:Static local:MainWindow.NeuesStart}" Key="N"/>
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.Pause}" CanExecute="Pause_CanExecute" Executed="Pause_Executed" />
+        <CommandBinding Command="{x:Static local:MainWindow.NeuesStart}" CanExecute="NeuesStart_CanExecute" Executed="NeuesStart_Executed"/>
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="_Spiel">
+                <MenuItem Header="_Neues Spiel" Name="spielNeuesSpiel" Click="spielNeuesSpiel_Click" InputGestureText="N" Command="{x:Static local:MainWindow.NeuesStart}"/>
+                <MenuItem Header="_Pause" Name="spielPause" Click="spielPause_Click" InputGestureText="P" IsCheckable="True" Command="{x:Static local:MainWindow.Pause}"/>
+                <Separator/>
+                <MenuItem Header="_Beenden" Click="spielBeenden_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Einstellungen">
+                <MenuItem Header="_Schwierigkeit">
+                    <MenuItem Header="Einfach" Name="schwierigkeitEinfach" Click="schwierigkeitEinfach_Click"/>
+                    <MenuItem Header="Mittel" Name="schwierigkeitMittel" Click="schwierigkeitMittel_Click"/>
+                    <MenuItem Header="Schwer" Name="schwierigkeitSchwer" Click="schwierigkeitSchwer_Click"/>
+                </MenuItem>
+                <MenuItem Header="Level stapeln" Name="levelStapeln" Click="levelStapeln_Click"/>
+            </MenuItem>
+        </Menu>
+        <Canvas x:Name="spielfeld" Grid.Row="1"/>
+        <Label x:Name="punkteAnzeige" FontSize="24" HorizontalAlignment="Right" Margin="0,20,30,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="zeitAnzeige" FontSize="24" HorizontalAlignment="Right" Margin="0,50,30,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="tempoOnOff" FontSize="24" HorizontalAlignment="Right" Margin="0,80,30,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="timerAnzeige" Content="10" Panel.ZIndex="-1" FontSize="100" Foreground="Gray" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="145" Width="160" Margin="50"/>
+        <ProgressBar x:Name="timerStatus" Panel.ZIndex="-1" Grid.Row="1" Height="25" Width="470" Minimum="0" Maximum="10" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="OrangeRed" Margin="180"/>
+    </Grid>
+</Window>

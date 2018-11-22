@@ -1,0 +1,38 @@
+﻿<RibbonWindow x:Class="MiniMal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MiniMal"
+        mc:Ignorable="d"
+        Title="MiniMal" Height="350" Width="525" WindowState="Maximized">
+    <Grid x:Name="meinGrid">
+        <Ribbon Margin="0,0,0,177">
+            <Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <RibbonButton SmallImageSource="symbole/save.png" Click="RibbonButton_Click"></RibbonButton>
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu SmallImageSource="symbole/appmenu.png" >
+                    <RibbonApplicationMenuItem x:Name="menuNeu" Header="Neu" ImageSource="symbole/neu.png" Click="menuNeu_Click"></RibbonApplicationMenuItem>
+                    <RibbonApplicationMenuItem x:Name="menuOeffnen" Header="Öffnen" ImageSource="symbole/oeffnen.png" Click="menuOeffnen_Click"></RibbonApplicationMenuItem>
+                    <RibbonApplicationMenuItem x:Name="menuSpeichern" Header="Speichern" ImageSource="symbole/save.png" Click="RibbonButton_Click"></RibbonApplicationMenuItem>
+                    <RibbonApplicationMenuItem x:Name="menuBeenden" Header="Beenden"></RibbonApplicationMenuItem>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Start">
+                <RibbonGroup Header="Zeichnen">
+                    <RibbonButton x:Name="buttonKreis" LargeImageSource="symbole/kreis.gif" Label="Kreis" Click="buttonKreis_Click"></RibbonButton>
+                    <RibbonButton x:Name="buttonFuellKreis" LargeImageSource="symbole/kreisgefuellt.gif" Label="Kreis Füllen" Click="buttonFuellKreis_Click"></RibbonButton>
+                    <RibbonButton x:Name="buttonLinie" LargeImageSource="symbole/linie.gif" Label="Linie" Click="buttonLinie_Click"></RibbonButton>
+                    <RibbonButton x:Name="buttonRechteck" LargeImageSource="symbole/rechteck.gif" Label="Rechteck" Click="buttonRechteck_Click"></RibbonButton>
+                </RibbonGroup>
+                <RibbonGroup Header="Format">
+                    <RibbonButton x:Name="buttonFarbAuswahl" LargeImageSource="symbole/farbauswahl.gif" Label="Farbauswahl" Click="buttonFarbAuswahl_Click"></RibbonButton>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        <Canvas x:Name="meinCanvas" Margin="0,142,0,0" Background="White" MouseLeftButtonDown="meinCanvas_MouseLeftButtonDown" MouseLeftButtonUp="meinCanvas_MouseLeftButtonUp"/>
+    </Grid>
+</RibbonWindow>

@@ -1,0 +1,57 @@
+﻿<RibbonWindow x:Class="WPFMinitext.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFMinitext"
+        mc:Ignorable="d"
+        Title="WPF-Minitext" Height="350" Width="525" WindowState="Maximized" Loaded="RibbonWindow_Loaded" Closing="RibbonWindow_Closing">
+    <Grid>
+        <Ribbon>
+            <Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <RibbonButton SmallImageSource="symbole/save.png" Click="RibbonButton_Click"></RibbonButton>
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu SmallImageSource="symbole/appmenu.png" >
+                    <RibbonApplicationMenuItem x:Name="menuNeu" Header="Neu" ImageSource="symbole/neu.png" Click="menuNeu_Click"></RibbonApplicationMenuItem>
+                    <RibbonApplicationMenuItem x:Name="menuOeffnen" Header="Öffnen" ImageSource="symbole/oeffnen.png" Click="menuOeffnen_Click"></RibbonApplicationMenuItem>
+                    <RibbonApplicationMenuItem x:Name="menuSpeichern" Header="Speichern" ImageSource="symbole/save.png" Click="menuSpeichern_Click"></RibbonApplicationMenuItem>
+                    <RibbonApplicationMenuItem x:Name="menuSpeichernUnter" Header="Speichern unter" Click="menuSpeichernUnter_Click"></RibbonApplicationMenuItem>
+                    <RibbonApplicationMenuItem x:Name="menuBeenden" Header="Beenden"></RibbonApplicationMenuItem>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Start">
+                <RibbonGroup Header="Zwischenablage">
+                    <RibbonButton x:Name="buttonEinfuegen" Label="Einfügen" LargeImageSource="symbole/paste.png" Command="ApplicationCommands.Paste"></RibbonButton>
+                    <RibbonButton x:Name="buttonAusschneiden" Label="Ausschneiden" SmallImageSource="symbole/cut.png" Command="ApplicationCommands.Cut"></RibbonButton>
+                    <RibbonButton x:Name="buttonKopieren" Label="Kopieren" SmallImageSource="symbole/copy.png" Command="ApplicationCommands.Copy"></RibbonButton>
+                </RibbonGroup>
+                <RibbonGroup Header="Format">
+                    <RibbonButton x:Name="buttonFett" Label="Fett" SmallImageSource="symbole/fettneu.png" Command="EditingCommands.ToggleBold"></RibbonButton>
+                    <RibbonButton x:Name="buttonKursiv" Label="Kursiv" SmallImageSource="symbole/kursivneu.png" Command="EditingCommands.ToggleItalic"></RibbonButton>
+                    <RibbonButton x:Name="buttonUnterstreichen" Label="Unterstreichen" SmallImageSource="symbole/unterstreichenneu.png" Command="EditingCommands.ToggleUnderline"></RibbonButton>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        <RichTextBox x:Name="richTextBox" Margin="0,139,0,0" TextChanged="richTextBox_TextChanged">
+            <!-- das eigene Kontext-Menü ist auskommentiert, da es das Rechtschreib-Kontext-Menü überdeckt
+            <RichTextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Kopieren" Command="Copy"></MenuItem>
+                    <MenuItem Header="Ausschneiden" Command="Cut"></MenuItem>
+                    <MenuItem Header="Einfügen" Command="Paste"></MenuItem>
+                    <Separator></Separator>
+                    <MenuItem Header="Rückgängig"  Command="Undo"></MenuItem>
+                    <MenuItem Header="Wiederholen" Command="Redo"></MenuItem>
+                </ContextMenu>
+            </RichTextBox.ContextMenu> -->
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+    </Grid>
+</RibbonWindow>
